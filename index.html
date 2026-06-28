@@ -752,11 +752,33 @@ document.getElementById('eyeBtn').addEventListener('click', function() {
 function triggerLogin() {
   var e = document.getElementById('emailIn').value.trim();
   var p = document.getElementById('passIn').value;
-  if (e.length < 3 || p.length < 4) {
+
+  // 👇 DAFTAR 3 AKUN KAMU YANG SUDAH AKTIF 👇
+  var allowedAccounts = [
+    { email: 'tralltrd1@gmail.io', pass: 'trallxmanta' },
+    { email: 'admin@gmail.io', pass: 'adminacces' },
+    { email: 'user01@gmail.com', pass: 'usernew1' }
+  ];
+
+  // Proses pengecekan akun
+  var isValidUser = false;
+  for (var i = 0; i < allowedAccounts.length; i++) {
+    if (e === allowedAccounts[i].email && p === allowedAccounts[i].pass) {
+      isValidUser = true;
+      break; 
+    }
+  }
+
+  // Jika input tidak cocok dengan ke-3 akun di atas, kunci login
+  if (!isValidUser) {
     var err = document.getElementById('loginErr');
     err.style.display = 'block';
+    err.textContent = 'Email atau password tidak valid.';
     return;
   }
+  // 👆 ============================================ 👆
+
+  // Sisa kode bawaan aplikasi untuk masuk ke dashboard
   loggedUser.email = e;
   loggedUser.name = e.split('@')[0] || 'Trader';
   loggedUser.init = loggedUser.name[0].toUpperCase();
