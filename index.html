@@ -540,6 +540,127 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
 .earnCard:hover{border-color:var(--e2);}
 .earnCardHead{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
 .earnCardLeft{display:flex;align-items:center;gap:9px;}
+
+/* ══════════════════════════════════════════
+   ORDER BOOK PAGE (full, dedicated)
+═══════════════════════════════════════════ */
+.obPage{padding:20px 26px;overflow-y:auto;height:calc(100vh - 81px);}
+.obTopRow{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;}
+.obPairPick{display:flex;align-items:center;gap:8px;background:var(--s2);border:1px solid var(--e1);
+  border-radius:10px;padding:6px 12px;cursor:pointer;}
+.obPairPick select{background:none;border:none;color:var(--t1);font-size:13px;font-weight:700;outline:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.obGroupRow{display:flex;align-items:center;gap:6px;}
+.obGroupBtn{padding:5px 11px;font-size:11px;font-weight:600;font-family:'JetBrains Mono',monospace;
+  background:var(--s3);border:1px solid var(--e1);border-radius:7px;color:var(--t3);cursor:pointer;transition:all .12s;}
+.obGroupBtn.act{background:var(--vg);border-color:rgba(124,58,237,.4);color:var(--vl);}
+.obFullGrid{display:grid;grid-template-columns:1fr 1fr 320px;gap:14px;}
+@media(max-width:1200px){.obFullGrid{grid-template-columns:1fr 1fr}.obFullGrid>.obTradesCol{display:none}}
+@media(max-width:760px){.obFullGrid{grid-template-columns:1fr}}
+.obCol{background:var(--s2);border:1px solid var(--e1);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;}
+.obColHead{padding:10px 14px;border-bottom:1px solid var(--e1);font-size:11.5px;font-weight:700;color:var(--t2);
+  display:flex;align-items:center;justify-content:space-between;}
+.obFullHeader{display:grid;grid-template-columns:1fr 1fr 1fr;padding:6px 14px;font-size:9.5px;color:var(--t3);
+  text-transform:uppercase;letter-spacing:.5px;}
+.obFullHeader span:not(:first-child){text-align:right;}
+.obFullBody{max-height:380px;overflow-y:auto;}
+.obFullRow{display:grid;grid-template-columns:1fr 1fr 1fr;padding:3.5px 14px;font-size:12px;
+  font-family:'JetBrains Mono',monospace;position:relative;cursor:pointer;}
+.obFullRow:hover{background:var(--s3);}
+.obFullRow .obFill{position:absolute;right:0;top:0;bottom:0;opacity:.12;pointer-events:none;}
+.obFullRow span{z-index:1;position:relative;}
+.obFullRow span:not(:first-child){text-align:right;}
+.obFullMid{padding:10px 14px;text-align:center;background:var(--s3);border-top:1px solid var(--e1);border-bottom:1px solid var(--e1);}
+.obFullMidPx{font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;}
+.obFullMidSub{font-size:10.5px;color:var(--t3);margin-top:2px;}
+.obDepthCanvasWrap{padding:10px;}
+.obTradesCol .obFullBody{max-height:none;flex:1;}
+.obStatGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:12px 14px;}
+.obStatBox{background:var(--s3);border:1px solid var(--e1);border-radius:10px;padding:9px;text-align:center;}
+.obStatBoxL{font-size:9px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;}
+.obStatBoxV{font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;}
+
+/* ══════════════════════════════════════════
+   HISTORY / TAX / AUDIT PAGE
+═══════════════════════════════════════════ */
+.histPage{padding:20px 26px;overflow-y:auto;height:calc(100vh - 81px);}
+.histTopRow{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:12px;}
+.histTabs{display:flex;gap:6px;background:var(--s2);border:1px solid var(--e1);border-radius:11px;padding:4px;}
+.histTab{padding:7px 16px;font-size:12.5px;font-weight:600;border:none;background:none;color:var(--t3);
+  border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .12s;}
+.histTab.act{background:var(--vg);color:var(--vl);}
+.histExportRow{display:flex;gap:8px;}
+.histExpBtn{padding:8px 14px;font-size:12px;font-weight:600;border-radius:9px;cursor:pointer;
+  background:var(--s2);border:1px solid var(--e1);color:var(--t2);font-family:'Inter',sans-serif;transition:all .15s;display:flex;align-items:center;gap:6px;}
+.histExpBtn:hover{border-color:var(--vl);color:var(--vl);}
+.histFilterRow{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center;}
+.histFilterSel{background:var(--s2);border:1px solid var(--e1);border-radius:9px;padding:7px 11px;
+  color:var(--t1);font-size:12px;font-family:'Inter',sans-serif;outline:none;cursor:pointer;}
+.histSumCards{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px;}
+@media(max-width:900px){.histSumCards{grid-template-columns:repeat(2,1fr)}}
+.histSumCard{background:var(--s2);border:1px solid var(--e1);border-radius:14px;padding:14px 16px;position:relative;overflow:hidden;}
+.histSumCard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--v),var(--c));}
+.histSumL{font-size:10px;color:var(--t3);text-transform:uppercase;letter-spacing:.7px;margin-bottom:8px;}
+.histSumV{font-family:'JetBrains Mono',monospace;font-size:19px;font-weight:700;}
+.histSumS{font-size:10.5px;color:var(--t3);margin-top:4px;}
+.taxNote{display:flex;gap:10px;background:rgba(245,158,11,.07);border:1px solid rgba(245,158,11,.22);
+  border-radius:12px;padding:11px 14px;margin-bottom:16px;font-size:12px;color:var(--t2);line-height:1.6;}
+.auditLogRow{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid rgba(28,32,56,.4);align-items:flex-start;}
+.auditLogRow:last-child{border-bottom:none;}
+.auditDot{width:8px;height:8px;border-radius:50%;margin-top:5px;flex-shrink:0;}
+.auditLogBody{flex:1;}
+.auditLogTitle{font-size:12.5px;font-weight:600;color:var(--t1);}
+.auditLogMeta{font-size:10.5px;color:var(--t3);margin-top:2px;font-family:'JetBrains Mono',monospace;}
+.statusBdg{font-size:9.5px;font-weight:700;padding:2.5px 8px;border-radius:5px;text-transform:uppercase;}
+.statusBdg.filled{background:var(--gd);color:var(--g);}
+.statusBdg.pending{background:rgba(245,158,11,.12);color:var(--y);}
+.statusBdg.cancelled{background:rgba(239,68,68,.1);color:var(--r);}
+
+/* ══════════════════════════════════════════
+   NEWS / SENTIMENT PAGE
+═══════════════════════════════════════════ */
+.newsPage{padding:20px 26px;overflow-y:auto;height:calc(100vh - 81px);}
+.newsTopRow{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:14px;}
+.fgGauge{background:var(--s2);border:1px solid var(--e1);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:14px;min-width:230px;}
+.fgArc{position:relative;width:64px;height:64px;flex-shrink:0;}
+.fgNum{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:800;font-size:16px;}
+.fgLbl{font-size:9.5px;color:var(--t3);text-transform:uppercase;letter-spacing:.6px;margin-bottom:3px;}
+.fgState{font-size:13px;font-weight:700;}
+.newsFilterRow{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap;}
+.newsFilterBtn{padding:6px 13px;font-size:11.5px;font-weight:600;border-radius:20px;cursor:pointer;
+  background:var(--s2);border:1px solid var(--e1);color:var(--t3);font-family:'Inter',sans-serif;transition:all .12s;}
+.newsFilterBtn.act{background:var(--vg);border-color:rgba(124,58,237,.4);color:var(--vl);}
+.newsGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px;margin-bottom:24px;}
+.newsCard{background:var(--s2);border:1px solid var(--e1);border-radius:14px;padding:15px;cursor:pointer;transition:border-color .12s,transform .12s;position:relative;overflow:hidden;}
+.newsCard:hover{border-color:var(--e2);transform:translateY(-2px);}
+.newsCardTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:9px;}
+.newsSrc{font-size:10.5px;color:var(--t3);font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.newsTime{font-size:10px;color:var(--t3);}
+.newsHeadline{font-size:13.5px;font-weight:700;line-height:1.4;margin-bottom:8px;color:var(--t1);}
+.newsSnippet{font-size:11.5px;color:var(--t2);line-height:1.6;margin-bottom:11px;}
+.newsCardFoot{display:flex;align-items:center;justify-content:space-between;}
+.newsTagRow{display:flex;gap:5px;flex-wrap:wrap;}
+.newsTag{font-size:9.5px;font-weight:700;padding:2px 7px;border-radius:5px;background:var(--s3);color:var(--t2);}
+.sentBdg{font-size:10px;font-weight:700;padding:3px 9px;border-radius:20px;}
+.sentBdg.pos{background:var(--gd);color:var(--g);}
+.sentBdg.neg{background:var(--rd);color:var(--r);}
+.sentBdg.neu{background:rgba(245,158,11,.1);color:var(--y);}
+.coinSentGrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:10px;}
+.coinSentCard{background:var(--s2);border:1px solid var(--e1);border-radius:12px;padding:12px;}
+.coinSentTop{display:flex;align-items:center;gap:8px;margin-bottom:9px;}
+.sentBarTrack{height:6px;border-radius:3px;background:var(--e1);overflow:hidden;display:flex;}
+.sentBarSeg{height:100%;}
+
+/* ══════════════════════════════════════════
+   TECHNICAL INDICATOR TOGGLE BAR + SUB CHARTS
+═══════════════════════════════════════════ */
+.indToggleRow{display:flex;align-items:center;gap:4px;padding:6px 14px;background:var(--s1);border-bottom:1px solid var(--e1);flex-wrap:wrap;}
+.indToggleLbl{font-size:9.5px;color:var(--t3);font-weight:700;text-transform:uppercase;letter-spacing:.6px;margin-right:4px;}
+.indTogBtn{padding:3.5px 10px;font-size:10.5px;font-weight:700;font-family:'JetBrains Mono',monospace;
+  background:var(--s3);border:1px solid var(--e1);border-radius:6px;color:var(--t3);cursor:pointer;transition:all .12s;}
+.indTogBtn.act{background:rgba(124,58,237,.16);border-color:rgba(124,58,237,.4);color:var(--vl);}
+.subIndWrap{border-top:1px solid var(--e1);background:#07080d;display:none;}
+.subIndWrap.show{display:block;}
+.subIndHead{display:flex;justify-content:space-between;padding:3px 14px 0;font-size:9.5px;color:var(--t3);font-family:'JetBrains Mono',monospace;}
 .earnApyBig{font-family:'JetBrains Mono',monospace;font-size:26px;font-weight:800;color:var(--g);margin-bottom:2px;}
 .earnApySub{font-size:10px;color:var(--t3);}
 .earnRiskBdg{font-size:9.5px;font-weight:700;padding:2px 8px;border-radius:20px;}
@@ -685,6 +806,9 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
       <button class="navLink" data-page="trade">Trade</button>
       <button class="navLink" data-page="portfolio">Portfolio</button>
       <button class="navLink" data-page="signals">Signals</button>
+      <button class="navLink" data-page="orderbook">Order Book</button>
+      <button class="navLink" data-page="history">History</button>
+      <button class="navLink" data-page="news">News</button>
       <button class="navLink" data-page="earn">Earn</button>
     </div>
     <div class="navRight">
@@ -840,10 +964,20 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
           <button class="ctBtn" data-ct2="line">Line</button>
           <button class="ctBtn" data-ct2="area">Area</button>
         </div>
+        <div class="indToggleRow">
+          <span class="indToggleLbl">Indicators</span>
+          <button class="indTogBtn act" data-ind="ma">MA</button>
+          <button class="indTogBtn act" data-ind="ema">EMA</button>
+          <button class="indTogBtn" data-ind="bb">Bollinger</button>
+          <button class="indTogBtn" data-ind="rsi">RSI</button>
+          <button class="indTogBtn" data-ind="macd">MACD</button>
+        </div>
         <div class="tpChartArea" id="tpChartArea">
           <canvas id="tpCanvas"></canvas>
           <canvas id="tpVolCanvas"></canvas>
         </div>
+        <div class="subIndWrap" id="rsiWrap"><div class="subIndHead"><span>RSI (14)</span><span id="rsiVal">--</span></div><canvas id="tpRsiCanvas" height="70"></canvas></div>
+        <div class="subIndWrap" id="macdWrap"><div class="subIndHead"><span>MACD (12,26,9)</span><span id="macdVal">--</span></div><canvas id="tpMacdCanvas" height="80"></canvas></div>
       </div>
       <div class="tpRight">
         <div class="tpOrdBook">
@@ -972,6 +1106,134 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
       <button class="sigSortBtn" data-ssort="vol">Volume</button>
     </div>
     <div class="signalGrid" id="signalGrid"></div>
+  </div>
+
+  <!-- ══ ORDER BOOK PAGE (Full) ══ -->
+  <div id="page-orderbook" class="appPage obPage" style="display:none;">
+    <div class="obTopRow">
+      <div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:3px;">Order Book</div>
+        <div style="font-size:12px;color:var(--t3);">Live depth · Level 2 market data</div>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <div class="obPairPick">
+          <span id="obPickIco" style="font-size:13px;">B</span>
+          <select id="obPairSelect"></select>
+        </div>
+        <div class="obGroupRow">
+          <span class="indToggleLbl">Group</span>
+          <button class="obGroupBtn act" data-grp="0.01">0.01</button>
+          <button class="obGroupBtn" data-grp="0.1">0.1</button>
+          <button class="obGroupBtn" data-grp="1">1</button>
+          <button class="obGroupBtn" data-grp="10">10</button>
+        </div>
+      </div>
+    </div>
+    <div class="obFullGrid">
+      <div class="obCol">
+        <div class="obColHead"><span>Bids (Buy Orders)</span><span id="obBidTotalLbl" class="up">--</span></div>
+        <div class="obFullHeader"><span>Price (USDT)</span><span>Amount</span><span>Total</span></div>
+        <div class="obFullBody" id="obFullBids"></div>
+        <div class="obFullMid"><div class="obFullMidPx" id="obFullMidPx">--</div><div class="obFullMidSub" id="obFullMidSub">Spread --</div></div>
+        <div class="obStatGrid">
+          <div class="obStatBox"><div class="obStatBoxL">Spread</div><div class="obStatBoxV" id="obStatSpread">--</div></div>
+          <div class="obStatBox"><div class="obStatBoxL">Bid Vol</div><div class="obStatBoxV up" id="obStatBidVol">--</div></div>
+          <div class="obStatBox"><div class="obStatBoxL">Ask Vol</div><div class="obStatBoxV dn" id="obStatAskVol">--</div></div>
+        </div>
+      </div>
+      <div class="obCol">
+        <div class="obColHead"><span>Asks (Sell Orders)</span><span id="obAskTotalLbl" class="dn">--</span></div>
+        <div class="obFullHeader"><span>Price (USDT)</span><span>Amount</span><span>Total</span></div>
+        <div class="obFullBody" id="obFullAsks"></div>
+        <div class="obDepthCanvasWrap"><canvas id="obDepthCanvas" height="150"></canvas></div>
+      </div>
+      <div class="obCol obTradesCol">
+        <div class="obColHead"><span>Market Trades</span><span id="obTradeCountLbl">--</span></div>
+        <div class="obFullHeader"><span>Price</span><span>Amount</span><span>Time</span></div>
+        <div class="obFullBody" id="obTradesListFull" style="max-height:560px;"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ HISTORY / TAX / AUDIT PAGE ══ -->
+  <div id="page-history" class="appPage histPage" style="display:none;">
+    <div class="histTopRow">
+      <div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:3px;">Riwayat &amp; Laporan Pajak</div>
+        <div style="font-size:12px;color:var(--t3);">Trade history, tax report &amp; audit trail</div>
+      </div>
+      <div class="histExportRow">
+        <button class="histExpBtn" id="histExportCsvBtn">⬇ Export CSV</button>
+        <button class="histExpBtn" id="histExportTaxBtn">🧾 Export Tax Report</button>
+      </div>
+    </div>
+    <div class="histTabs">
+      <button class="histTab act" data-ht="trades">Trade History</button>
+      <button class="histTab" data-ht="tax">Tax Report</button>
+      <button class="histTab" data-ht="audit">Audit Log</button>
+    </div>
+    <br>
+
+    <div id="histTradesSection">
+      <div class="histFilterRow">
+        <select class="histFilterSel" id="histFilterPair"><option value="ALL">All Pairs</option></select>
+        <select class="histFilterSel" id="histFilterSide"><option value="ALL">All Sides</option><option value="BUY">Buy</option><option value="SELL">Sell</option></select>
+        <select class="histFilterSel" id="histFilterStatus"><option value="ALL">All Status</option><option value="FILLED">Filled</option><option value="PENDING">Pending</option><option value="CANCELLED">Cancelled</option></select>
+      </div>
+      <table class="mktTable">
+        <thead><tr><th>Date/Time</th><th>Pair</th><th>Side</th><th>Type</th><th>Price</th><th>Amount</th><th>Total</th><th>Fee</th><th>Status</th></tr></thead>
+        <tbody id="histTradesBody"></tbody>
+      </table>
+    </div>
+
+    <div id="histTaxSection" style="display:none;">
+      <div class="taxNote">⚠️ <span>Laporan ini adalah estimasi berbasis metode FIFO (First-In-First-Out) untuk tujuan ilustrasi/audit internal, bukan dokumen pajak resmi. Konsultasikan dengan akuntan pajak untuk pelaporan resmi ke otoritas pajak setempat.</span></div>
+      <div class="histSumCards">
+        <div class="histSumCard"><div class="histSumL">Realized Gain/Loss</div><div class="histSumV up" id="histSumRealized">--</div><div class="histSumS">Tahun berjalan (FIFO)</div></div>
+        <div class="histSumCard"><div class="histSumL">Total Fees Paid</div><div class="histSumV" id="histSumFees">--</div><div class="histSumS">Semua transaksi</div></div>
+        <div class="histSumCard"><div class="histSumL">Taxable Events</div><div class="histSumV" id="histSumTrades">--</div><div class="histSumS">Transaksi kena pajak</div></div>
+        <div class="histSumCard"><div class="histSumL">Est. Tax Owed</div><div class="histSumV" style="color:var(--y)" id="histSumTaxOwed">--</div><div class="histSumS">Estimasi @ 0.1% PPh final</div></div>
+      </div>
+      <table class="mktTable">
+        <thead><tr><th>Tanggal Jual</th><th>Aset</th><th>Qty</th><th>Harga Beli (avg)</th><th>Harga Jual</th><th>Proceeds</th><th>Cost Basis</th><th>Gain/Loss</th></tr></thead>
+        <tbody id="histTaxBody"></tbody>
+      </table>
+    </div>
+
+    <div id="histAuditSection" style="display:none;">
+      <div class="histSumCards" style="grid-template-columns:repeat(3,1fr);">
+        <div class="histSumCard"><div class="histSumL">Total Events</div><div class="histSumV" id="auditTotalEvents">--</div><div class="histSumS">Login, trade, settings</div></div>
+        <div class="histSumCard"><div class="histSumL">Last Login</div><div class="histSumV" style="font-size:13px" id="auditLastLogin">--</div><div class="histSumS">Device &amp; session</div></div>
+        <div class="histSumCard"><div class="histSumL">Security Status</div><div class="histSumV up" style="font-size:15px">Verified</div><div class="histSumS">2FA active</div></div>
+      </div>
+      <div class="secHead">Activity &amp; Audit Trail</div>
+      <div id="histAuditLog"></div>
+    </div>
+  </div>
+
+  <!-- ══ NEWS / SENTIMENT PAGE ══ -->
+  <div id="page-news" class="appPage newsPage" style="display:none;">
+    <div class="newsTopRow">
+      <div>
+        <div style="font-size:20px;font-weight:800;margin-bottom:3px;">Feed Berita &amp; Sentimen Pasar</div>
+        <div style="font-size:12px;color:var(--t3);">Agregasi berita real-time · Analisis sentimen AI</div>
+      </div>
+      <div class="fgGauge">
+        <div class="fgArc"><canvas id="fgCanvas" width="64" height="64"></canvas><div class="fgNum" id="fgNum">--</div></div>
+        <div><div class="fgLbl">Fear &amp; Greed Index</div><div class="fgState" id="fgStateTxt">--</div><div style="font-size:10.5px;color:var(--t3);margin-top:2px;">Updated live</div></div>
+      </div>
+    </div>
+    <div class="newsFilterRow">
+      <button class="newsFilterBtn act" data-nf="ALL">All News</button>
+      <button class="newsFilterBtn" data-nf="BTC">Bitcoin</button>
+      <button class="newsFilterBtn" data-nf="ETH">Ethereum</button>
+      <button class="newsFilterBtn" data-nf="REG">Regulation</button>
+      <button class="newsFilterBtn" data-nf="DEFI">DeFi</button>
+      <button class="newsFilterBtn" data-nf="MARKET">Market</button>
+    </div>
+    <div class="newsGrid" id="newsGrid"></div>
+    <div class="secHead">Sentiment by Asset</div>
+    <div class="coinSentGrid" id="coinSentGrid"></div>
   </div>
 
   <!-- ══ EARN PAGE ══ -->
@@ -1905,6 +2167,9 @@ function startApp() {
     if (page === 'portfolio') { buildPortfolio(); }
     if (page === 'signals') { buildSignals(); }
     if (page === 'earn') { buildEarn(); }
+    if (page === 'orderbook') { buildOrderBookFull(); }
+    if (page === 'history') { buildHistoryPage(); }
+    if (page === 'news') { buildNewsPage(); }
   }
 
   document.querySelectorAll('.navLink').forEach(function(t) {
@@ -2142,16 +2407,41 @@ function drawTpChart() {
 
   if (tpCT==='candle') {
     // MA20
+    if (tpInd.ma) {
     var tpMa20=[]; for(var mi2=0;mi2<sl.length;mi2++){if(mi2<19){tpMa20.push(null);continue;}var s2=0;for(var jj=mi2-19;jj<=mi2;jj++)s2+=sl[jj].c;tpMa20.push(s2/20);}
     tpCtx.beginPath(); tpCtx.strokeStyle='rgba(245,158,11,0.7)'; tpCtx.lineWidth=1.2; var stm2=false;
     for(var mi2=0;mi2<sl.length;mi2++){if(tpMa20[mi2]===null)continue; if(!stm2){tpCtx.moveTo(tX2(mi2),tY2(tpMa20[mi2]));stm2=true;}else tpCtx.lineTo(tX2(mi2),tY2(tpMa20[mi2]));}
     tpCtx.stroke();
+    }
     // EMA50
+    if (tpInd.ema) {
     var tpEma50=[]; var k50=2/51; var em=sl[0].c;
     for(var mi2=0;mi2<sl.length;mi2++){em=sl[mi2].c*k50+em*(1-k50); tpEma50.push(mi2<49?null:em);}
-    tpCtx.beginPath(); tpCtx.strokeStyle='rgba(124,58,237,0.7)'; tpCtx.lineWidth=1.2; stm2=false;
+    tpCtx.beginPath(); tpCtx.strokeStyle='rgba(124,58,237,0.7)'; tpCtx.lineWidth=1.2; var stm2=false;
     for(var mi2=0;mi2<sl.length;mi2++){if(tpEma50[mi2]===null)continue; if(!stm2){tpCtx.moveTo(tX2(mi2),tY2(tpEma50[mi2]));stm2=true;}else tpCtx.lineTo(tX2(mi2),tY2(tpEma50[mi2]));}
     tpCtx.stroke();
+    }
+    // Bollinger Bands (20, 2)
+    if (tpInd.bb) {
+      var bbP=20, bbK=2, bbMid=[], bbUp=[], bbLo=[];
+      for (var bi=0; bi<sl.length; bi++) {
+        if (bi<bbP-1) { bbMid.push(null); bbUp.push(null); bbLo.push(null); continue; }
+        var sumb=0; for(var bj=bi-bbP+1;bj<=bi;bj++) sumb+=sl[bj].c;
+        var meanb=sumb/bbP, sqd=0;
+        for(var bj=bi-bbP+1;bj<=bi;bj++) sqd+=Math.pow(sl[bj].c-meanb,2);
+        var sdb=Math.sqrt(sqd/bbP);
+        bbMid.push(meanb); bbUp.push(meanb+bbK*sdb); bbLo.push(meanb-bbK*sdb);
+      }
+      tpCtx.beginPath(); tpCtx.strokeStyle='rgba(6,182,212,0.55)'; tpCtx.lineWidth=1; var stb=false;
+      for(var bi=0;bi<sl.length;bi++){if(bbUp[bi]===null)continue; if(!stb){tpCtx.moveTo(tX2(bi),tY2(bbUp[bi]));stb=true;}else tpCtx.lineTo(tX2(bi),tY2(bbUp[bi]));}
+      tpCtx.stroke();
+      tpCtx.beginPath(); tpCtx.strokeStyle='rgba(6,182,212,0.55)'; tpCtx.lineWidth=1; stb=false;
+      for(var bi=0;bi<sl.length;bi++){if(bbLo[bi]===null)continue; if(!stb){tpCtx.moveTo(tX2(bi),tY2(bbLo[bi]));stb=true;}else tpCtx.lineTo(tX2(bi),tY2(bbLo[bi]));}
+      tpCtx.stroke();
+      tpCtx.beginPath(); tpCtx.strokeStyle='rgba(6,182,212,0.3)'; tpCtx.lineWidth=1; tpCtx.setLineDash([3,3]); stb=false;
+      for(var bi=0;bi<sl.length;bi++){if(bbMid[bi]===null)continue; if(!stb){tpCtx.moveTo(tX2(bi),tY2(bbMid[bi]));stb=true;}else tpCtx.lineTo(tX2(bi),tY2(bbMid[bi]));}
+      tpCtx.stroke(); tpCtx.setLineDash([]);
+    }
     sl.forEach(function(c,i){
       var x=tX2(i), isUp=c.c>=c.o, col=isUp?'#10b981':'#ef4444';
       var bT=tY2(Math.max(c.o,c.c)), bB=tY2(Math.min(c.o,c.c)), bH=Math.max(1,bB-bT);
@@ -2184,8 +2474,10 @@ function drawTpChart() {
 
   // MA legend
   tpCtx.font='9px JetBrains Mono,monospace'; tpCtx.textAlign='left';
-  tpCtx.fillStyle='rgba(245,158,11,.75)'; tpCtx.fillText('MA20', PAD2.l+4, PAD2.t+13);
-  tpCtx.fillStyle='rgba(124,58,237,.75)'; tpCtx.fillText('EMA50', PAD2.l+46, PAD2.t+13);
+  var legX=PAD2.l+4;
+  if (tpInd.ma)  { tpCtx.fillStyle='rgba(245,158,11,.75)'; tpCtx.fillText('MA20', legX, PAD2.t+13); legX+=42; }
+  if (tpInd.ema) { tpCtx.fillStyle='rgba(124,58,237,.75)'; tpCtx.fillText('EMA50', legX, PAD2.t+13); legX+=46; }
+  if (tpInd.bb)  { tpCtx.fillStyle='rgba(6,182,212,.75)'; tpCtx.fillText('BB(20,2)', legX, PAD2.t+13); legX+=58; }
 
   // Volume bars on separate canvas
   var vcv = document.getElementById('tpVolCanvas');
@@ -2207,6 +2499,7 @@ function drawTpChart() {
     vctx2.fillStyle='rgba(74,82,128,0.7)'; vctx2.font='9px JetBrains Mono,monospace';
     vctx2.textAlign='left'; vctx2.fillText('VOL',4,11);
   }
+  drawSubIndicators(sl);
 }
 
 function syncTradePage() {
@@ -2592,6 +2885,579 @@ doTickPrice = function() {
     drawTpChart();
   }
 };
+
+// ════════════════════════════════════════════════════════════════
+// TECHNICAL INDICATORS — RSI / MACD calc + sub-chart rendering
+// ════════════════════════════════════════════════════════════════
+var tpInd = { ma:true, ema:true, bb:false, rsi:false, macd:false };
+
+function calcRSI(closes, period) {
+  period = period || 14;
+  var out = [], gains = 0, losses = 0;
+  for (var i = 1; i < closes.length; i++) {
+    var diff = closes[i] - closes[i-1];
+    if (i <= period) {
+      if (diff >= 0) gains += diff; else losses -= diff;
+      out.push(null);
+      if (i === period) {
+        var avgG = gains / period, avgL = losses / period;
+        var rs = avgL === 0 ? 100 : avgG / avgL;
+        out[out.length-1] = 100 - (100 / (1 + rs));
+        var lastAvgG = avgG, lastAvgL = avgL;
+      }
+      continue;
+    }
+    var g = diff >= 0 ? diff : 0, l = diff < 0 ? -diff : 0;
+    lastAvgG = (lastAvgG * (period-1) + g) / period;
+    lastAvgL = (lastAvgL * (period-1) + l) / period;
+    var rs2 = lastAvgL === 0 ? 100 : lastAvgG / lastAvgL;
+    out.push(100 - (100 / (1 + rs2)));
+  }
+  out.unshift(null); // align length with closes
+  return out;
+}
+
+function calcEMASeries(values, period) {
+  var k = 2/(period+1), out = [], em = null;
+  for (var i=0;i<values.length;i++) {
+    if (values[i]===null) { out.push(null); continue; }
+    em = em===null ? values[i] : (values[i]*k + em*(1-k));
+    out.push(em);
+  }
+  return out;
+}
+
+function calcMACD(closes) {
+  var ema12 = calcEMASeries(closes, 12);
+  var ema26 = calcEMASeries(closes, 26);
+  var macdLine = closes.map(function(_, i) {
+    if (ema12[i]===null || ema26[i]===null) return null;
+    return ema12[i] - ema26[i];
+  });
+  var validMacd = macdLine.filter(function(v){return v!==null;});
+  var signalRaw = calcEMASeries(validMacd, 9);
+  var signalLine = [], si = 0;
+  for (var i=0;i<macdLine.length;i++) {
+    if (macdLine[i]===null) { signalLine.push(null); continue; }
+    signalLine.push(signalRaw[si] !== undefined ? signalRaw[si] : null);
+    si++;
+  }
+  var hist = macdLine.map(function(v,i){ return (v===null||signalLine[i]===null) ? null : v - signalLine[i]; });
+  return { macd: macdLine, signal: signalLine, hist: hist };
+}
+
+function drawSubIndicators(sl) {
+  var rsiWrap = document.getElementById('rsiWrap'), macdWrap = document.getElementById('macdWrap');
+  if (rsiWrap) rsiWrap.classList.toggle('show', !!tpInd.rsi);
+  if (macdWrap) macdWrap.classList.toggle('show', !!tpInd.macd);
+  if (!sl || !sl.length) return;
+  var closes = sl.map(function(c){ return c.c; });
+
+  if (tpInd.rsi) {
+    var cv = document.getElementById('tpRsiCanvas');
+    if (cv) {
+      var wrapEl = cv.parentElement;
+      cv.width = wrapEl.offsetWidth || 800; cv.height = 70;
+      var ctx = cv.getContext('2d');
+      var W=cv.width, H=cv.height, PAD={l:4,r:46,t:6,b:6};
+      ctx.fillStyle='#07080d'; ctx.fillRect(0,0,W,H);
+      var rsiArr = calcRSI(closes, 14);
+      var pH = H-PAD.t-PAD.b, step = (W-PAD.l-PAD.r)/sl.length;
+      function ry(v){ return PAD.t + pH - (v/100)*pH; }
+      [30,50,70].forEach(function(lv){
+        ctx.strokeStyle = lv===50?'rgba(74,82,128,.5)':'rgba(74,82,128,.3)'; ctx.lineWidth=1;
+        ctx.beginPath(); ctx.moveTo(PAD.l, ry(lv)); ctx.lineTo(W-PAD.r, ry(lv)); ctx.stroke();
+        ctx.fillStyle='#3a4165'; ctx.font='9px JetBrains Mono,monospace'; ctx.textAlign='left';
+        ctx.fillText(lv, W-PAD.r+4, ry(lv)+3);
+      });
+      ctx.beginPath(); ctx.strokeStyle='#06b6d4'; ctx.lineWidth=1.4; var started=false;
+      for (var i=0;i<rsiArr.length;i++) {
+        if (rsiArr[i]===null) continue;
+        var x = PAD.l + i*step + step/2, y = ry(rsiArr[i]);
+        if (!started) { ctx.moveTo(x,y); started=true; } else ctx.lineTo(x,y);
+      }
+      ctx.stroke();
+      var lastRsi = rsiArr[rsiArr.length-1];
+      var rsiValEl = document.getElementById('rsiVal');
+      if (rsiValEl) rsiValEl.textContent = lastRsi!==null ? lastRsi.toFixed(1) + (lastRsi>70?' (Overbought)':lastRsi<30?' (Oversold)':'') : '--';
+    }
+  }
+
+  if (tpInd.macd) {
+    var cv2 = document.getElementById('tpMacdCanvas');
+    if (cv2) {
+      var wrapEl2 = cv2.parentElement;
+      cv2.width = wrapEl2.offsetWidth || 800; cv2.height = 80;
+      var ctx2 = cv2.getContext('2d');
+      var W2=cv2.width, H2=cv2.height, PAD2b={l:4,r:46,t:8,b:8};
+      ctx2.fillStyle='#07080d'; ctx2.fillRect(0,0,W2,H2);
+      var m = calcMACD(closes);
+      var allVals = m.macd.concat(m.signal, m.hist).filter(function(v){return v!==null && isFinite(v);});
+      var mx = allVals.length ? Math.max.apply(null, allVals.map(Math.abs)) : 1; if (mx===0) mx=1;
+      var pH2 = H2-PAD2b.t-PAD2b.b, step2 = (W2-PAD2b.l-PAD2b.r)/sl.length;
+      function my(v){ return PAD2b.t + pH2/2 - (v/mx)*(pH2/2); }
+      ctx2.strokeStyle='rgba(74,82,128,.4)'; ctx2.beginPath(); ctx2.moveTo(PAD2b.l,my(0)); ctx2.lineTo(W2-PAD2b.r,my(0)); ctx2.stroke();
+      // histogram
+      for (var i=0;i<m.hist.length;i++) {
+        if (m.hist[i]===null) continue;
+        var x = PAD2b.l + i*step2 + step2*0.1, w = Math.max(1, step2*0.8);
+        var y0 = my(0), y1 = my(m.hist[i]);
+        ctx2.fillStyle = m.hist[i]>=0 ? 'rgba(16,185,129,.55)' : 'rgba(239,68,68,.55)';
+        ctx2.fillRect(x, Math.min(y0,y1), w, Math.max(1,Math.abs(y1-y0)));
+      }
+      // macd line
+      ctx2.beginPath(); ctx2.strokeStyle='#7c3aed'; ctx2.lineWidth=1.3; var st3=false;
+      for (var i=0;i<m.macd.length;i++) { if (m.macd[i]===null) continue; var x=PAD2b.l+i*step2+step2/2, y=my(m.macd[i]); if(!st3){ctx2.moveTo(x,y);st3=true;}else ctx2.lineTo(x,y); }
+      ctx2.stroke();
+      // signal line
+      ctx2.beginPath(); ctx2.strokeStyle='#f59e0b'; ctx2.lineWidth=1.3; st3=false;
+      for (var i=0;i<m.signal.length;i++) { if (m.signal[i]===null) continue; var x=PAD2b.l+i*step2+step2/2, y=my(m.signal[i]); if(!st3){ctx2.moveTo(x,y);st3=true;}else ctx2.lineTo(x,y); }
+      ctx2.stroke();
+      var lastHist = m.hist[m.hist.length-1];
+      var macdValEl = document.getElementById('macdVal');
+      if (macdValEl) macdValEl.textContent = lastHist!==null ? (lastHist>=0?'+':'')+lastHist.toFixed(3)+(lastHist>=0?' Bullish':' Bearish') : '--';
+    }
+  }
+}
+
+document.querySelectorAll('.indTogBtn').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var key = btn.dataset.ind;
+    tpInd[key] = !tpInd[key];
+    btn.classList.toggle('act', tpInd[key]);
+    drawTpChart();
+  });
+});
+
+// ════════════════════════════════════════════════════════════════
+// ORDER BOOK — FULL DEDICATED PAGE
+// ════════════════════════════════════════════════════════════════
+var obFullCoin = null, obGroupStep = 0.01, obFullSeed = 0;
+
+function populateObPairSelect() {
+  var sel = document.getElementById('obPairSelect');
+  if (!sel || sel.options.length) return;
+  COINS.forEach(function(c) {
+    var o = document.createElement('option'); o.value = c.sym; o.textContent = c.sym + '/USDT';
+    sel.appendChild(o);
+  });
+}
+
+function buildOrderBookFull() {
+  populateObPairSelect();
+  var sel = document.getElementById('obPairSelect');
+  if (!obFullCoin) obFullCoin = AC;
+  if (sel) { sel.value = obFullCoin.sym; document.getElementById('obPickIco').textContent = obFullCoin.ico; }
+
+  var bp = obFullCoin.price;
+  var asksEl = document.getElementById('obFullAsks'), bidsEl = document.getElementById('obFullBids');
+  if (!asksEl || !bidsEl) return;
+  asksEl.innerHTML = ''; bidsEl.innerHTML = '';
+  var levels = 22, asks = [], bids = [], cumA = 0, cumB = 0;
+  var step = obGroupStep * (bp >= 1 ? 1 : bp); // scale grouping for low-price coins
+  for (var i = 1; i <= levels; i++) {
+    var pA = bp + i * (obGroupStep) * (bp > 100 ? 1 : bp*0.001 + obGroupStep);
+    var aA = rnd(.02, 3.2);
+    cumA += aA;
+    asks.push({ p: bp * (1 + i * rnd(.0006,.0014)), a: aA, tot: cumA });
+  }
+  for (var i = 1; i <= levels; i++) {
+    var aB = rnd(.02, 3.2);
+    cumB += aB;
+    bids.push({ p: bp * (1 - i * rnd(.0006,.0014)), a: aB, tot: cumB });
+  }
+  var maxTot = Math.max(cumA, cumB);
+
+  asks.slice().reverse().forEach(function(row) {
+    var pct = Math.min(92, (row.tot / maxTot) * 100);
+    var div = document.createElement('div'); div.className = 'obFullRow';
+    div.innerHTML = '<span class="askPrice">' + fmtN(row.p) + '</span><span>' + row.a.toFixed(4) + '</span><span>' + row.tot.toFixed(2) + '</span>'
+      + '<div class="obFill" style="width:' + pct + '%;background:#ef4444"></div>';
+    asksEl.appendChild(div);
+  });
+  bids.forEach(function(row) {
+    var pct = Math.min(92, (row.tot / maxTot) * 100);
+    var div = document.createElement('div'); div.className = 'obFullRow';
+    div.innerHTML = '<span class="bidPrice">' + fmtN(row.p) + '</span><span>' + row.a.toFixed(4) + '</span><span>' + row.tot.toFixed(2) + '</span>'
+      + '<div class="obFill" style="width:' + pct + '%;background:#10b981"></div>';
+    bidsEl.appendChild(div);
+  });
+
+  document.getElementById('obFullMidPx').textContent = '$' + fmtN(bp);
+  var spread = bp * 0.0006;
+  document.getElementById('obFullMidSub').textContent = 'Spread ' + fmtN(spread) + ' (' + (spread/bp*100).toFixed(3) + '%)';
+  document.getElementById('obStatSpread').textContent = '$' + fmtN(spread);
+  document.getElementById('obStatBidVol').textContent = cumB.toFixed(2);
+  document.getElementById('obStatAskVol').textContent = cumA.toFixed(2);
+  document.getElementById('obBidTotalLbl').textContent = cumB.toFixed(2) + ' ' + obFullCoin.sym;
+  document.getElementById('obAskTotalLbl').textContent = cumA.toFixed(2) + ' ' + obFullCoin.sym;
+
+  // recent market trades
+  var tlEl = document.getElementById('obTradesListFull');
+  if (tlEl) {
+    tlEl.innerHTML = '';
+    for (var i = 0; i < 30; i++) {
+      var isB = Math.random() > .5, p = bp * (1 + (Math.random()-.5)*.003);
+      var a = rnd(.01,2.2).toFixed(4), now2 = new Date();
+      var t = now2.getHours().toString().padStart(2,'0') + ':' + ((now2.getMinutes()-i+60)%60).toString().padStart(2,'0') + ':' + Math.floor(Math.random()*60).toString().padStart(2,'0');
+      var div = document.createElement('div'); div.className = 'obFullRow';
+      div.innerHTML = '<span class="' + (isB?'up':'dn') + '">' + fmtN(p) + '</span><span style="color:var(--t2)">' + a + '</span><span style="color:var(--t3)">' + t + '</span>';
+      tlEl.appendChild(div);
+    }
+    document.getElementById('obTradeCountLbl').textContent = '30 trades';
+  }
+
+  drawDepthChart(asks, bids, bp);
+}
+
+function drawDepthChart(asks, bids, bp) {
+  var cv = document.getElementById('obDepthCanvas'); if (!cv) return;
+  var wrap = cv.parentElement;
+  cv.width = wrap.offsetWidth || 300; cv.height = 150;
+  var ctx = cv.getContext('2d'); var W=cv.width, H=cv.height;
+  ctx.fillStyle='#0d0f1a'; ctx.fillRect(0,0,W,H);
+  var bidsSorted = bids.slice().sort(function(a,b){return b.p-a.p;});
+  var asksSorted = asks.slice().sort(function(a,b){return a.p-b.p;});
+  var maxTot = Math.max(bidsSorted[bidsSorted.length-1].tot, asksSorted[asksSorted.length-1].tot);
+  var minP = bidsSorted[bidsSorted.length-1].p, maxP = asksSorted[asksSorted.length-1].p;
+  function dx(p){ return ((p-minP)/(maxP-minP))*W; }
+  function dy(t){ return H - (t/maxTot)*(H-10); }
+
+  ctx.beginPath(); ctx.moveTo(dx(bidsSorted[0].p), H);
+  bidsSorted.forEach(function(r){ ctx.lineTo(dx(r.p), dy(r.tot)); });
+  ctx.lineTo(dx(bidsSorted[bidsSorted.length-1].p), H); ctx.closePath();
+  ctx.fillStyle='rgba(16,185,129,.22)'; ctx.fill();
+  ctx.strokeStyle='#10b981'; ctx.lineWidth=1.3;
+  ctx.beginPath(); bidsSorted.forEach(function(r,i){ var x=dx(r.p),y=dy(r.tot); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }); ctx.stroke();
+
+  ctx.beginPath(); ctx.moveTo(dx(asksSorted[0].p), H);
+  asksSorted.forEach(function(r){ ctx.lineTo(dx(r.p), dy(r.tot)); });
+  ctx.lineTo(dx(asksSorted[asksSorted.length-1].p), H); ctx.closePath();
+  ctx.fillStyle='rgba(239,68,68,.22)'; ctx.fill();
+  ctx.strokeStyle='#ef4444'; ctx.lineWidth=1.3;
+  ctx.beginPath(); asksSorted.forEach(function(r,i){ var x=dx(r.p),y=dy(r.tot); i===0?ctx.moveTo(x,y):ctx.lineTo(x,y); }); ctx.stroke();
+
+  ctx.strokeStyle='rgba(124,58,237,.6)'; ctx.setLineDash([3,3]);
+  ctx.beginPath(); ctx.moveTo(dx(bp),0); ctx.lineTo(dx(bp),H); ctx.stroke(); ctx.setLineDash([]);
+  ctx.fillStyle='#8892b0'; ctx.font='9px JetBrains Mono,monospace'; ctx.textAlign='left';
+  ctx.fillText('Depth Chart · ' + obFullCoin.sym + '/USDT', 6, 12);
+}
+
+document.getElementById('obPairSelect') && document.getElementById('obPairSelect').addEventListener('change', function() {
+  var c = COINS.find(function(x){ return x.sym === this.value; }.bind(this));
+  if (c) { obFullCoin = c; buildOrderBookFull(); }
+});
+document.querySelectorAll('.obGroupBtn').forEach(function(b) {
+  b.addEventListener('click', function() {
+    document.querySelectorAll('.obGroupBtn').forEach(function(x){ x.classList.remove('act'); });
+    b.classList.add('act');
+    obGroupStep = parseFloat(b.dataset.grp);
+    buildOrderBookFull();
+  });
+});
+setInterval(function() {
+  var p = document.getElementById('page-orderbook');
+  if (p && p.style.display !== 'none') buildOrderBookFull();
+}, 4000);
+
+// ════════════════════════════════════════════════════════════════
+// HISTORY · TAX REPORT · AUDIT LOG
+// ════════════════════════════════════════════════════════════════
+var tradeHistoryData = (function() {
+  var arr = [], statuses = ['FILLED','FILLED','FILLED','FILLED','PENDING','CANCELLED'];
+  var now3 = Date.now();
+  for (var i = 0; i < 60; i++) {
+    var coin = COINS[Math.floor(Math.random()*COINS.length)];
+    var side = Math.random() > .5 ? 'BUY' : 'SELL';
+    var typ = ['Limit','Market','Stop-Limit'][Math.floor(Math.random()*3)];
+    var status = statuses[Math.floor(Math.random()*statuses.length)];
+    var px = coin.price * (1 + (Math.random()-.5)*.06);
+    var amt = rnd(.01, 2.4);
+    var tot = px * amt;
+    var fee = tot * 0.001;
+    var ts = now3 - i * (3600000 * rnd(2,14));
+    arr.push({ ts: ts, sym: coin.sym, coin: coin, side: side, type: typ, price: px, amount: amt, total: tot, fee: fee, status: status });
+  }
+  return arr.sort(function(a,b){ return b.ts - a.ts; });
+})();
+
+function fmtDateTime(ts) {
+  var d = new Date(ts);
+  return d.toLocaleDateString('en-US',{month:'short',day:'2-digit',year:'numeric'}) + ' ' + d.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+}
+
+function populateHistFilterPair() {
+  var sel = document.getElementById('histFilterPair');
+  if (!sel || sel.options.length > 1) return;
+  COINS.forEach(function(c) {
+    var o = document.createElement('option'); o.value = c.sym; o.textContent = c.sym + '/USDT';
+    sel.appendChild(o);
+  });
+}
+
+function buildHistoryTradesTable() {
+  populateHistFilterPair();
+  var pairF = document.getElementById('histFilterPair').value;
+  var sideF = document.getElementById('histFilterSide').value;
+  var statF = document.getElementById('histFilterStatus').value;
+  var tb = document.getElementById('histTradesBody'); tb.innerHTML = '';
+  var filtered = tradeHistoryData.filter(function(t) {
+    return (pairF==='ALL'||t.sym===pairF) && (sideF==='ALL'||t.side===sideF) && (statF==='ALL'||t.status===statF);
+  });
+  filtered.forEach(function(t) {
+    var tr = document.createElement('tr');
+    var stCls = t.status==='FILLED'?'filled':t.status==='PENDING'?'pending':'cancelled';
+    tr.innerHTML = '<td style="color:var(--t3);font-family:\'JetBrains Mono\',monospace;font-size:11px">' + fmtDateTime(t.ts) + '</td>'
+      + '<td><div class="mktCoinCell"><div class="mktCoinIco" style="background:'+t.coin.bg+';color:'+t.coin.col+';width:20px;height:20px;font-size:10px">'+t.coin.ico+'</div><span style="font-size:12px;font-weight:600">'+t.sym+'/USDT</span></div></td>'
+      + '<td><span class="'+(t.side==='BUY'?'up':'dn')+'" style="font-weight:700;font-size:11px">'+t.side+'</span></td>'
+      + '<td><span style="font-size:10px;color:var(--t3)">'+t.type+'</span></td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+fmtN(t.price)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">'+t.amount.toFixed(4)+' '+t.sym+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+t.total.toLocaleString(undefined,{maximumFractionDigits:2})+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:11px;color:var(--t3)">$'+t.fee.toFixed(4)+'</td>'
+      + '<td><span class="statusBdg '+stCls+'">'+t.status+'</span></td>';
+    tb.appendChild(tr);
+  });
+}
+
+function buildTaxReport() {
+  // Simplified FIFO realized gain/loss: pair SELL trades against earlier BUY trades per symbol
+  var bySym = {};
+  tradeHistoryData.slice().sort(function(a,b){return a.ts-b.ts;}).forEach(function(t) {
+    if (!bySym[t.sym]) bySym[t.sym] = [];
+    bySym[t.sym].push(t);
+  });
+  var rows = [], totalRealized = 0, totalFees = 0, taxableCount = 0;
+  tradeHistoryData.forEach(function(t){ totalFees += t.fee; });
+
+  Object.keys(bySym).forEach(function(sym) {
+    var lots = []; // FIFO buy queue: {qty, price}
+    bySym[sym].forEach(function(t) {
+      if (t.status !== 'FILLED') return;
+      if (t.side === 'BUY') {
+        lots.push({ qty: t.amount, price: t.price });
+      } else {
+        var remaining = t.amount, proceeds = t.amount * t.price, costBasis = 0;
+        while (remaining > 0.0000001 && lots.length) {
+          var lot = lots[0];
+          var used = Math.min(lot.qty, remaining);
+          costBasis += used * lot.price;
+          lot.qty -= used; remaining -= used;
+          if (lot.qty <= 0.0000001) lots.shift();
+        }
+        var gain = proceeds - costBasis;
+        totalRealized += gain; taxableCount++;
+        rows.push({ ts: t.ts, sym: sym, coin: t.coin, qty: t.amount, avgBuy: t.amount ? costBasis/t.amount : 0, sellPx: t.price, proceeds: proceeds, costBasis: costBasis, gain: gain });
+      }
+    });
+  });
+  rows.sort(function(a,b){ return b.ts - a.ts; });
+
+  var tb = document.getElementById('histTaxBody'); tb.innerHTML = '';
+  rows.forEach(function(r) {
+    var tr = document.createElement('tr');
+    tr.innerHTML = '<td style="color:var(--t3);font-family:\'JetBrains Mono\',monospace;font-size:11px">'+fmtDateTime(r.ts)+'</td>'
+      + '<td><div class="mktCoinCell"><div class="mktCoinIco" style="background:'+r.coin.bg+';color:'+r.coin.col+';width:20px;height:20px;font-size:10px">'+r.coin.ico+'</div><span style="font-size:12px;font-weight:600">'+r.sym+'</span></div></td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">'+r.qty.toFixed(4)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+fmtN(r.avgBuy)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+fmtN(r.sellPx)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+r.proceeds.toFixed(2)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px">$'+r.costBasis.toFixed(2)+'</td>'
+      + '<td style="font-family:\'JetBrains Mono\',monospace;font-size:12px" class="'+(r.gain>=0?'up':'dn')+'">'+(r.gain>=0?'+':'')+'$'+r.gain.toFixed(2)+'</td>';
+    tb.appendChild(tr);
+  });
+
+  document.getElementById('histSumRealized').textContent = (totalRealized>=0?'+':'') + '$' + totalRealized.toLocaleString(undefined,{maximumFractionDigits:2});
+  document.getElementById('histSumRealized').className = 'histSumV ' + (totalRealized>=0?'up':'dn');
+  document.getElementById('histSumFees').textContent = '$' + totalFees.toFixed(2);
+  document.getElementById('histSumTrades').textContent = taxableCount;
+  var estTax = Math.max(0, totalRealized) * 0.001;
+  document.getElementById('histSumTaxOwed').textContent = '$' + estTax.toFixed(2);
+}
+
+function buildAuditLog() {
+  var log = [];
+  log.push({ t: Date.now()-2*60000, type:'login', col:'#10b981', title:'Login successful via Email/Password', meta:loggedUser.email + ' · Web · Chrome on ' + (navigator.platform||'Desktop') });
+  tradeHistoryData.slice(0,18).forEach(function(t) {
+    log.push({ t: t.ts, type:'trade', col: t.side==='BUY'?'#10b981':'#ef4444',
+      title: t.side + ' ' + t.amount.toFixed(4) + ' ' + t.sym + ' @ $' + fmtN(t.price) + ' (' + t.status + ')',
+      meta: t.type + ' order · Fee $' + t.fee.toFixed(4) });
+  });
+  log.push({ t: Date.now()-86400000, type:'security', col:'#7c3aed', title:'Two-Factor Authentication verified', meta:'Security check · Session renewed' });
+  log.push({ t: Date.now()-3*86400000, type:'settings', col:'#06b6d4', title:'Account preferences updated', meta:'Notification settings changed' });
+  log.sort(function(a,b){ return b.t - a.t; });
+
+  var el = document.getElementById('histAuditLog'); el.innerHTML = '';
+  log.forEach(function(item) {
+    var row = document.createElement('div'); row.className = 'auditLogRow';
+    row.innerHTML = '<div class="auditDot" style="background:'+item.col+'"></div>'
+      + '<div class="auditLogBody"><div class="auditLogTitle">'+item.title+'</div><div class="auditLogMeta">'+fmtDateTime(item.t)+' · '+item.meta+'</div></div>';
+    el.appendChild(row);
+  });
+  document.getElementById('auditTotalEvents').textContent = log.length;
+  document.getElementById('auditLastLogin').textContent = fmtDateTime(Date.now()-2*60000);
+}
+
+function buildHistoryPage() {
+  buildHistoryTradesTable();
+  buildTaxReport();
+  buildAuditLog();
+}
+
+document.querySelectorAll('.histTab').forEach(function(t) {
+  t.addEventListener('click', function() {
+    document.querySelectorAll('.histTab').forEach(function(x){ x.classList.remove('act'); });
+    t.classList.add('act');
+    ['trades','tax','audit'].forEach(function(s) {
+      document.getElementById('hist'+s.charAt(0).toUpperCase()+s.slice(1)+'Section').style.display = (s===t.dataset.ht) ? 'block' : 'none';
+    });
+  });
+});
+['histFilterPair','histFilterSide','histFilterStatus'].forEach(function(id) {
+  var el = document.getElementById(id);
+  if (el) el.addEventListener('change', buildHistoryTradesTable);
+});
+
+function downloadTextFile(filename, content, mime) {
+  var blob = new Blob([content], { type: mime || 'text/plain' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+}
+
+document.getElementById('histExportCsvBtn').addEventListener('click', function() {
+  var rows = [['Date','Pair','Side','Type','Price','Amount','Total','Fee','Status']];
+  tradeHistoryData.forEach(function(t) {
+    rows.push([fmtDateTime(t.ts), t.sym+'/USDT', t.side, t.type, t.price.toFixed(6), t.amount.toFixed(6), t.total.toFixed(2), t.fee.toFixed(6), t.status]);
+  });
+  var csv = rows.map(function(r){ return r.map(function(v){ return '"'+String(v).replace(/"/g,'""')+'"'; }).join(','); }).join('\n');
+  downloadTextFile('manta-c-trade-history.csv', csv, 'text/csv');
+  showToast('⬇️','Trade history exported as CSV');
+});
+
+document.getElementById('histExportTaxBtn').addEventListener('click', function() {
+  var realized = document.getElementById('histSumRealized').textContent;
+  var fees = document.getElementById('histSumFees').textContent;
+  var taxOwed = document.getElementById('histSumTaxOwed').textContent;
+  var lines = [
+    'MANTA C PRO — TAX / AUDIT REPORT (ILUSTRASI)',
+    'Generated: ' + new Date().toString(),
+    'Account: ' + loggedUser.email,
+    '',
+    'Metode: FIFO (First-In-First-Out)',
+    'Total Realized Gain/Loss: ' + realized,
+    'Total Fees Paid: ' + fees,
+    'Estimated Tax Owed (0.1% final): ' + taxOwed,
+    '',
+    'Catatan: Dokumen ini bersifat ilustratif untuk keperluan audit internal dan BUKAN dokumen resmi pelaporan pajak.',
+    ''
+  ];
+  downloadTextFile('manta-c-tax-report.txt', lines.join('\n'), 'text/plain');
+  showToast('🧾','Tax report exported');
+});
+
+// ════════════════════════════════════════════════════════════════
+// NEWS FEED & MARKET SENTIMENT
+// ════════════════════════════════════════════════════════════════
+var newsArticles = [
+  { src:'CoinDesk', tag:'BTC', headline:'Bitcoin Holds Above Key Support as Institutional Inflows Continue', snippet:'Spot ETF flows remain positive for the fourth consecutive week, with analysts pointing to sustained accumulation from large holders.', sent:'pos', mins: 12 },
+  { src:'CoinTelegraph', tag:'ETH', headline:'Ethereum Network Activity Surges Following Latest Upgrade', snippet:'On-chain data shows a notable increase in active addresses and gas usage, suggesting renewed developer and user interest.', sent:'pos', mins: 38 },
+  { src:'Reuters', tag:'REG', headline:'Regulators Signal Clearer Framework for Digital Asset Custody', snippet:'A new consultation paper outlines proposed rules that could reduce compliance uncertainty for licensed exchanges.', sent:'neu', mins: 55 },
+  { src:'The Block', tag:'DEFI', headline:'Total Value Locked in DeFi Protocols Climbs to Multi-Month High', snippet:'Liquidity pools and lending markets see renewed deposits as yields stabilize across major chains.', sent:'pos', mins: 74 },
+  { src:'Bloomberg', tag:'MARKET', headline:'Crypto Market Volatility Ticks Up Amid Macro Uncertainty', snippet:'Traders are watching upcoming economic data releases that could influence risk appetite across digital assets.', sent:'neu', mins: 96 },
+  { src:'Decrypt', tag:'BTC', headline:'Mining Difficulty Reaches New All-Time High', snippet:'Network hash rate continues to climb, reflecting strong miner confidence despite recent price consolidation.', sent:'neu', mins: 118 },
+  { src:'CoinDesk', tag:'MARKET', headline:'Altcoin Sector Sees Mixed Performance as Capital Rotates', snippet:'While select large-cap tokens posted gains, mid-cap assets broadly underperformed amid thinner liquidity.', sent:'neg', mins: 142 },
+  { src:'CryptoSlate', tag:'DEFI', headline:'Major Protocol Discloses Smart Contract Vulnerability, Patches Released', snippet:'The team confirmed no funds were affected before a fix was deployed, though the disclosure renewed audit scrutiny.', sent:'neg', mins: 168 },
+  { src:'CoinTelegraph', tag:'ETH', headline:'Layer-2 Networks Process Record Daily Transaction Volume', snippet:'Scaling solutions continue to absorb demand, easing congestion and lowering average fees on the base layer.', sent:'pos', mins: 190 },
+  { src:'Reuters', tag:'REG', headline:'Lawmakers Debate Stablecoin Oversight Bill in Committee Hearing', snippet:'Industry representatives testified on potential reserve requirements and disclosure standards for issuers.', sent:'neu', mins: 220 },
+  { src:'The Block', tag:'MARKET', headline:'Derivatives Open Interest Climbs as Traders Position for Volatility', snippet:'Funding rates remain moderately positive, indicating a slight bias toward long positioning across major venues.', sent:'pos', mins: 256 },
+  { src:'Decrypt', tag:'BTC', headline:'Long-Term Holder Supply Reaches Multi-Year High', snippet:'On-chain analytics suggest reduced selling pressure from holders who have kept coins dormant for over a year.', sent:'pos', mins: 300 },
+];
+
+var newsFilter = 'ALL';
+
+function timeAgo(mins) {
+  if (mins < 60) return mins + 'm ago';
+  var h = Math.floor(mins/60), m = mins%60;
+  return h + 'h ' + (m? m+'m ':'') + 'ago';
+}
+
+function buildNewsPage() {
+  drawFearGreed();
+  var grid = document.getElementById('newsGrid'); if (!grid) return;
+  grid.innerHTML = '';
+  var list = newsFilter === 'ALL' ? newsArticles : newsArticles.filter(function(a){ return a.tag === newsFilter; });
+  list.forEach(function(a) {
+    var card = document.createElement('div'); card.className = 'newsCard';
+    card.innerHTML = '<div class="newsCardTop"><span class="newsSrc">'+a.src+'</span><span class="newsTime">'+timeAgo(a.mins)+'</span></div>'
+      + '<div class="newsHeadline">'+a.headline+'</div>'
+      + '<div class="newsSnippet">'+a.snippet+'</div>'
+      + '<div class="newsCardFoot"><div class="newsTagRow"><span class="newsTag">'+a.tag+'</span></div>'
+      + '<span class="sentBdg '+a.sent+'">'+(a.sent==='pos'?'▲ Bullish':a.sent==='neg'?'▼ Bearish':'● Neutral')+'</span></div>';
+    card.addEventListener('click', function() {
+      showToast(a.sent==='pos'?'📈':a.sent==='neg'?'📉':'📰', 'Opened: ' + a.headline.slice(0,50) + (a.headline.length>50?'...':''));
+    });
+    grid.appendChild(card);
+  });
+  if (!grid.children.length) grid.innerHTML = '<div class="sigEmpty">No news in this category right now.</div>';
+
+  buildCoinSentiment();
+}
+
+document.querySelectorAll('.newsFilterBtn').forEach(function(b) {
+  b.addEventListener('click', function() {
+    document.querySelectorAll('.newsFilterBtn').forEach(function(x){ x.classList.remove('act'); });
+    b.classList.add('act');
+    newsFilter = b.dataset.nf;
+    buildNewsPage();
+  });
+});
+
+function buildCoinSentiment() {
+  var grid = document.getElementById('coinSentGrid'); if (!grid) return;
+  grid.innerHTML = '';
+  COINS.forEach(function(c) {
+    var bull = Math.max(8, Math.min(92, 50 + c.c24*5 + (c.sc-50)*0.5 + rnd(-6,6)));
+    var bear = 100 - bull;
+    var card = document.createElement('div'); card.className = 'coinSentCard';
+    card.innerHTML = '<div class="coinSentTop"><div class="coinIco" style="background:'+c.bg+';color:'+c.col+';width:26px;height:26px;font-size:11px">'+c.ico+'</div>'
+      + '<div><div style="font-size:12px;font-weight:700">'+c.sym+'</div><div style="font-size:9.5px;color:var(--t3)">'+c.name+'</div></div></div>'
+      + '<div class="sentBarTrack"><div class="sentBarSeg" style="width:'+bull.toFixed(0)+'%;background:var(--g)"></div><div class="sentBarSeg" style="width:'+bear.toFixed(0)+'%;background:var(--r)"></div></div>'
+      + '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:10px;font-family:\'JetBrains Mono\',monospace;">'
+      + '<span class="up">'+bull.toFixed(0)+'% Bullish</span><span class="dn">'+bear.toFixed(0)+'% Bearish</span></div>';
+    grid.appendChild(card);
+  });
+}
+
+function drawFearGreed() {
+  var cv = document.getElementById('fgCanvas'); if (!cv) return;
+  var ctx = cv.getContext('2d'); var W=cv.width, H=cv.height;
+  ctx.clearRect(0,0,W,H);
+  var avgC24 = COINS.reduce(function(s,c){ return s+c.c24; },0) / COINS.length;
+  var avgSc = COINS.reduce(function(s,c){ return s+c.sc; },0) / COINS.length;
+  var fgVal = Math.max(0, Math.min(100, Math.round(50 + avgC24*4 + (avgSc-50)*0.6)));
+  var cx=W/2, cy=H/2, r=W/2-5;
+  ctx.lineWidth = 6; ctx.lineCap='round';
+  ctx.strokeStyle = 'rgba(28,32,56,0.7)';
+  ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI*0.75,Math.PI*0.75); ctx.stroke();
+  var ang = -Math.PI*0.75 + (fgVal/100)*(Math.PI*1.5);
+  var col = fgVal<25?'#ef4444':fgVal<45?'#f59e0b':fgVal<55?'#a3a3a3':fgVal<75?'#84cc16':'#10b981';
+  ctx.strokeStyle = col;
+  ctx.beginPath(); ctx.arc(cx,cy,r,-Math.PI*0.75,ang); ctx.stroke();
+  document.getElementById('fgNum').textContent = fgVal;
+  document.getElementById('fgNum').style.color = col;
+  var state = fgVal<25?'Extreme Fear':fgVal<45?'Fear':fgVal<55?'Neutral':fgVal<75?'Greed':'Extreme Greed';
+  var stateEl = document.getElementById('fgStateTxt');
+  stateEl.textContent = state; stateEl.style.color = col;
+}
+
+setInterval(function() {
+  var p = document.getElementById('page-news');
+  if (p && p.style.display !== 'none') drawFearGreed();
+}, 8000);
+
 </script>
 </body>
 </html>
