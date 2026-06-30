@@ -131,7 +131,7 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
 .coinRow:hover{background:var(--s3);}
 .coinRow.active{background:var(--vg);}
 .coinIco{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;
-  justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;}
+  justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;border:1.5px solid rgba(255,255,255,.10);box-shadow:0 0 0 1px rgba(0,0,0,.25) inset;}
 .coinMeta{flex:1;min-width:0;}
 .coinName{font-size:12.5px;font-weight:600;}
 .coinSym{font-size:10.5px;color:var(--t2);font-family:'JetBrains Mono',monospace;}
@@ -1054,6 +1054,12 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
 
   <!-- ══ TRADE PAGE ══ -->
   <div id="page-trade" class="appPage" style="display:none;">
+    <div class="tpModeBar">
+      <span class="tpModeLbl">Mode Trading:</span>
+      <button class="tpModeBtn act" id="tpModeAutoBtn" data-tpm="auto"><span class="tpModeIco">🤖</span>Otomatis Trade</button>
+      <button class="tpModeBtn" id="tpModeManualBtn" data-tpm="manual"><span class="tpModeIco">⚡</span>Manual Trade</button>
+      <span class="tpModeHint" id="tpModeHint">Trading spot biasa dengan order book &amp; eksekusi otomatis AI</span>
+    </div>
     <div class="tradePage">
       <div id="tpAutoView" style="display:contents">
       <div class="tpLeft">
@@ -1072,12 +1078,6 @@ nav{background:rgba(13,15,26,.96);border-bottom:1px solid var(--e1);
             <div class="tpSt"><div class="tpStL">24h Vol</div><div class="tpStV" id="tpV">--</div></div>
             <div class="tpSt"><div class="tpStL">Mkt Cap</div><div class="tpStV" id="tpM">--</div></div>
           </div>
-        </div>
-        <div class="tpModeBar">
-          <span class="tpModeLbl">Mode Trading:</span>
-          <button class="tpModeBtn act" id="tpModeAutoBtn" data-tpm="auto"><span class="tpModeIco">🤖</span>Otomatis (AI)</button>
-          <button class="tpModeBtn" id="tpModeManualBtn" data-tpm="manual"><span class="tpModeIco">⚡</span>Manual (Naik/Turun)</button>
-          <span class="tpModeHint" id="tpModeHint">Trading spot biasa dengan order book &amp; eksekusi otomatis AI</span>
         </div>
         <div class="ivBar" id="ivBar">
           <span class="ivLabel">Auto Update:</span>
@@ -1739,7 +1739,7 @@ var COINS = [
   {sym:'SOL', name:'Solana',    ico:'S', col:'#9945ff', bg:'#140a22', price:178.55,   c1:-.88, c24:4.12,  c7:15.32, mcap:'82B',   vol:'498M',  rank:4,  ai:'STRONG_BUY', sc:91},
   {sym:'XRP', name:'XRP',       ico:'X', col:'#00aae4', bg:'#061420', price:.6182,    c1:.15,  c24:-1.34, c7:-3.21, mcap:'34B',   vol:'1.24B', rank:5,  ai:'SELL',       sc:32},
   {sym:'ADA', name:'Cardano',   ico:'A', col:'#0033ad', bg:'#060b1c', price:.4521,    c1:.22,  c24:2.10,  c7:6.88,  mcap:'16B',   vol:'312M',  rank:6,  ai:'BUY',        sc:68},
-  {sym:'DOGE',name:'Dogecoin',  ico:'D', col:'#c3a634', bg:'#18140a', price:.1624,    c1:-.55, c24:-2.14, c7:-5.44, mcap:'23B',   vol:'982M',  rank:7,  ai:'STRONG_SELL',sc:18},
+  {sym:'DOGE',name:'Dogecoin',  ico:'D', col:'#f2c14e', bg:'#2a2210', price:.1624,    c1:-.55, c24:-2.14, c7:-5.44, mcap:'23B',   vol:'982M',  rank:7,  ai:'STRONG_SELL',sc:18},
   {sym:'AVAX',name:'Avalanche', ico:'V', col:'#e84142', bg:'#1a0808', price:38.94,    c1:.66,  c24:3.55,  c7:11.20, mcap:'16B',   vol:'213M',  rank:8,  ai:'BUY',        sc:75},
   {sym:'LINK',name:'Chainlink', ico:'L', col:'#2a5ada', bg:'#080e1a', price:14.82,    c1:-.12, c24:1.08,  c7:4.22,  mcap:'9B',    vol:'89M',   rank:9,  ai:'BUY',        sc:70},
   {sym:'MATIC',name:'Polygon',  ico:'M', col:'#8247e5', bg:'#100a1a', price:.8834,    c1:.33,  c24:-.88,  c7:2.18,  mcap:'8B',    vol:'74M',   rank:10, ai:'NEUTRAL',    sc:50},
@@ -3804,12 +3804,16 @@ setInterval(function() {
     function xT(t){ return padL + ((t - tMin) / otWindowMs) * plotW; }
     function yP(p){ return padT + (1 - (p - pMin)/(pMax-pMin)) * plotH; }
 
-    // grid horizontal halus
-    otCtx.strokeStyle = 'rgba(255,255,255,0.04)';
+    // grid horizontal halus + label harga
+    otCtx.strokeStyle = 'rgba(255,255,255,0.06)';
     otCtx.lineWidth = 1;
+    otCtx.font = '600 9.5px JetBrains Mono,monospace';
     for (var g=0; g<=4; g++){
       var gy = padT + (plotH/4)*g;
       otCtx.beginPath(); otCtx.moveTo(padL,gy); otCtx.lineTo(w-padR,gy); otCtx.stroke();
+      var gp = pMax - (pMax-pMin)*(g/4);
+      otCtx.fillStyle = 'rgba(255,255,255,0.28)';
+      otCtx.fillText(fmtPrice(gp), w-padR+4, gy+3);
     }
 
     // garis entry & area expiry untuk setiap trade aktif
@@ -3864,9 +3868,12 @@ setInterval(function() {
         var mx2=(pts2[j-1].x+pts2[j].x)/2, my2=(pts2[j-1].y+pts2[j].y)/2;
         otCtx.quadraticCurveTo(pts2[j-1].x,pts2[j-1].y,mx2,my2);
       }
-      otCtx.strokeStyle = col; otCtx.lineWidth = 2.4; otCtx.lineJoin='round'; otCtx.lineCap='round';
-      otCtx.shadowColor = col; otCtx.shadowBlur = 10;
-      otCtx.stroke(); otCtx.shadowBlur = 0;
+      otCtx.strokeStyle = col; otCtx.lineWidth = 3; otCtx.lineJoin='round'; otCtx.lineCap='round';
+      otCtx.shadowColor = col; otCtx.shadowBlur = 14;
+      otCtx.stroke();
+      otCtx.shadowBlur = 0;
+      otCtx.strokeStyle = 'rgba(255,255,255,.35)'; otCtx.lineWidth = 1;
+      otCtx.stroke();
     }
 
     // titik kepala (glow berdenyut)
@@ -3891,7 +3898,7 @@ setInterval(function() {
 
   // ── Render candlestick view by bucketing the smooth tick stream into OHLC bars ──
   function otDrawCandles(visible, xT, yP, padL, padR, w){
-    var bucketMs = Math.max(1000, Math.round(otWindowMs / 32 / 1000) * 1000);
+    var bucketMs = Math.max(800, Math.round(otWindowMs / 36 / 200) * 200);
     var buckets = {};
     var order = [];
     visible.forEach(function(pt){
@@ -3901,17 +3908,31 @@ setInterval(function() {
       b.h = Math.max(b.h, pt.p); b.l = Math.min(b.l, pt.p); b.c = pt.p;
     });
     order.sort(function(a,b){ return a-b; });
-    var bw = Math.max(3, (w - padL - padR) / order.length * 0.62);
+    var bw = Math.max(5, Math.min(22, (w - padL - padR) / order.length * 0.68));
     order.forEach(function(key){
       var b = buckets[key];
       var cx = xT(key + bucketMs/2);
       var up = b.c >= b.o;
       var col = up ? '#10b981' : '#ef4444';
+      var glow = up ? 'rgba(16,185,129,.55)' : 'rgba(239,68,68,.55)';
       var yO = yP(b.o), yC = yP(b.c), yH = yP(b.h), yL = yP(b.l);
-      otCtx.strokeStyle = col; otCtx.fillStyle = col; otCtx.lineWidth = 1.2;
+
+      // sumbu (wick) — garis tipis dengan ujung membulat
+      otCtx.strokeStyle = col; otCtx.lineWidth = 1.6; otCtx.lineCap = 'round';
+      otCtx.shadowColor = glow; otCtx.shadowBlur = 5;
       otCtx.beginPath(); otCtx.moveTo(cx, yH); otCtx.lineTo(cx, yL); otCtx.stroke();
-      var top = Math.min(yO,yC), hgt = Math.max(1.5, Math.abs(yC-yO));
+      otCtx.shadowBlur = 0;
+
+      // badan candle — gradient + border tegas
+      var top = Math.min(yO,yC), hgt = Math.max(2.2, Math.abs(yC-yO));
+      var bodyGrad = otCtx.createLinearGradient(0, top, 0, top+hgt);
+      bodyGrad.addColorStop(0, up ? '#34d399' : '#f87171');
+      bodyGrad.addColorStop(1, up ? '#059669' : '#dc2626');
+      otCtx.fillStyle = bodyGrad;
       otCtx.fillRect(cx-bw/2, top, bw, hgt);
+      otCtx.strokeStyle = up ? 'rgba(16,185,129,.9)' : 'rgba(239,68,68,.9)';
+      otCtx.lineWidth = 1;
+      otCtx.strokeRect(cx-bw/2, top, bw, hgt);
     });
   }
 
@@ -3957,12 +3978,12 @@ setInterval(function() {
     if (!el) return;
     el.className = 'otResultFlash ' + status;
     var label = status==='win' ? ('✅ MENANG <small>+'+fmtBal(pl)+'</small>')
-              : status==='lose' ? ('❌ KALAH <small>'+fmtBal(pl)+'</small>')
+              : status==='lose' ? ('✕ TIDAK TEPAT <small>'+fmtBal(pl)+'</small>')
               : ('➖ SERI / PUSH <small>Dana dikembalikan</small>');
     el.innerHTML = label;
     el.style.display = 'block';
     setTimeout(function(){ el.style.display='none'; }, 1800);
-    showToast(status==='win'?'✅':status==='lose'?'❌':'➖', status==='win'?'Trade menang '+fmtBal(pl):status==='lose'?'Trade kalah '+fmtBal(Math.abs(pl)):'Trade push, dana kembali');
+    showToast(status==='win'?'✅':status==='lose'?'✕':'➖', status==='win'?'Trade berhasil '+fmtBal(pl):status==='lose'?'Prediksi tidak tepat, rugi '+fmtBal(Math.abs(pl)):'Trade push, dana kembali');
   }
 
   function otRenderCountdown(){
